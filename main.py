@@ -1,21 +1,11 @@
 #import libs
 import numpy as np
-from sklearn.cluster import KMeans, Birch
-from sklearn.mixture import GaussianMixture
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-import umap
 from matplotlib import pyplot as plt
+from sklearn.cluster import KMeans, Birch
 import matplotlib.cm as cm
 from sklearn.decomposition import TruncatedSVD
-import time
-from sklearn.preprocessing import normalize
 from sklearn.metrics import silhouette_score
 import scipy.cluster.hierarchy as sch
-from scipy.cluster.hierarchy import fcluster
-from scipy import sparse
-from scipy import stats
-import despike
-from scipy.stats.mstats import spearmanr
 import despike
 from scipy.stats.mstats import spearmanr
 from utilis import apply_DR
@@ -67,8 +57,8 @@ print(labels_arrayA.shape, 'out-shape')
 co_matrix = coo_mat(e_clusterings)
 # To reduce in order to faster the computation of hierarchy
 #M_PCs = 50
-SVD_threshold = 0.9
-svd = TruncatedSVD(n_components=51, n_iter=25)
+SVD_threshold = 0.99
+svd = TruncatedSVD(n_components=51, n_iter=50)
 pcs_all = svd.fit_transform(co_matrix)
 evr = svd.explained_variance_ratio_
 evr_cumsum = np.cumsum(evr)
