@@ -8,7 +8,7 @@ from sklearn.metrics import silhouette_score
 import scipy.cluster.hierarchy as sch
 import despike
 from scipy.stats.mstats import spearmanr
-from utilis import apply_DR
+from utilis import Dimensionality_reduction
 from utilis import f_ensemble_clustering
 from utilis import coo_mat
 from utilis import find_nearest
@@ -41,7 +41,7 @@ for m in chunks:
     print(np.array(m).shape)
 
 #Reduce the dimensions of each chunk
-DR_chunks = apply_DR(chunks, n_components=3)
+DR_chunks = Dimensionality_reduction(chunks, n_components=3)
 #get ensemble clustering
 e_clusterings, k_clustersss = f_ensemble_clustering(DR_chunks)
 print(k_clustersss, 'k-clusters')
