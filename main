@@ -2,15 +2,12 @@
 import numpy as np
 from sklearn.cluster import KMeans, Birch
 from sklearn.mixture import GaussianMixture
-from sklearn.preprocessing import MinMaxScaler
-from sklearn.preprocessing import StandardScaler as SS
+from sklearn.preprocessing import MinMaxScaler, StandardScaler
 import umap
 from matplotlib import pyplot as plt
 import matplotlib.cm as cm
 from sklearn.decomposition import TruncatedSVD
 import time
-from PIL import Image
-from PIL import ImageFilter
 from sklearn.preprocessing import normalize
 from sklearn.metrics import silhouette_score
 import scipy.cluster.hierarchy as sch
@@ -19,3 +16,22 @@ from scipy import sparse
 from scipy import stats
 import despike
 from scipy.stats.mstats import spearmanr
+import despike
+from scipy.stats.mstats import spearmanr
+from utilis import apply_DR
+from utilis import f_ensemble_clustering
+from utilis import coo_mat
+from utilis import find_nearest
+from utilis import discrete_cmap
+
+
+#color map for visualization
+cmap = discrete_cmap(18, 'jet')
+
+#data shape 
+image_shape = 55, 56  # 51, 56 #HCRAC
+#image_shape = 285, 260 #brain
+#image_shape = 202, 107 #mouse fetus
+
+# Data load
+data = np.loadtxt("HCA_new_data.txt")
